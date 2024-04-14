@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Leaderboard UI Design</title>
+    <meta
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+      name="viewport"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="./css/leaderboard.css" />
+    <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css"
+    />
+  </head>
+  <body>
+    <div class="tradingview-widget-container fixed-bottom">
+      <div class="tradingview-widget-container__widget"></div>
+
+      <script
+        type="text/javascript"
+        src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+        async
+      >
+          {
+          "symbols": [
+            {
+              "proName": "FOREXCOM:SPXUSD",
+              "title": "S&P 500"
+            },
+            {
+              "proName": "FOREXCOM:NSXUSD",
+              "title": "US 100"
+            },
+            {
+              "proName": "FX_IDC:EURUSD",
+              "title": "EUR/USD"
+            },
+            {
+              "proName": "BITSTAMP:BTCUSD",
+              "title": "Bitcoin"
+            },
+            {
+              "proName": "BITSTAMP:ETHUSD",
+              "title": "Ethereum"
+            }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "light",
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "locale": "in"
+        }
+      </script>
+    </div>
+
+    <div class="cover-container d-flex h-100 p-3 flex-column sticky-top">
+      <header class="masthead mb-auto">
+        <div class="container-fluid inner">
+          <h3 class="masthead-brand fwt-700" style="text-align: center">
+            Trading <span class="text-primary">Game </span>
+          </h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="index.html"
+              ><button class="btn btn-outline-primary">Home</button></a
+            >
+            <a class="nav-link" href="contests.html"
+              ><button class="btn btn-outline-primary">Contests</button></a
+            >
+            <a class="nav-link" href="signin.html" id="loginbtn"
+              ><button class="btn btn-outline-primary">Login</button></a
+            >
+
+            <button
+              id="profilebtn"
+              type="button"
+              class="btn btn-outline-light"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style="border: none"
+            >
+              <img id="navprofileimg" src="img/1.jpg" class="circle-img-nav mb-2" alt="User Img" />
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" id="dashboardbtn" href="#">Dashboard</a>
+             
+
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" id="logoutbtn">Log Out</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+    </div>
+    <div class="jumbotron rounded bg-linear text-White">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-md-12 mt-5 px-5">
+            <h1 class="display-4" style="text-align: center">
+              <span class="fwt-900 heading" id="contestname">Contest Name</span>
+            </h1>
+            <p class="lead my-3 fwt-700" style="text-align: center">
+              <span class="subheading1" >Organised By </span><br />
+              <span class="subheading2" id="organisername">Dream11</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr style="width: 70%" />
+    <section class="main-content">
+      <div class="container">
+        <h1 class="display-4" style="text-align: center; font-weight: 400">
+          <span class="fwt-700">TOP</span><span> Gainers </span>
+        </h1>
+        <br />
+        <br />
+
+        <div id="topgainers" class="row"></div>
+
+        <h4 class="fwt-700 mt-5" style="font-size: 3rem">Leaderboard</h4>
+
+        <table class="table">
+          <thead>
+            <tr class="bg-primary text-white rounded">
+              <th>Rank</th>
+              <th>User</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboardtable"></tbody>
+        </table>
+      </div>
+    </section>
+    <footer class="w-100 py-4 flex-shrink-0">
+      <div class="container py-4">
+        <div class="row gy-4 gx-5 justify-content-between">
+          <div class="col-lg-4 col-md-6">
+            <h5 class="h1 text-white">
+              Trading<span class="text-primary"> Game </span>
+            </h5>
+            <p class="small text-muted">
+              Increase your Trading skills anytime you want witch incentives.
+              Just Use Trading Game like Thousands of People and make your life
+              easier
+            </p>
+            <p class="small text-muted mb-0">
+              &copy; Copyrights. All rights reserved.
+              <a class="text-primary" href="#">Tradinggame.com</a>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h5 class="text-white mb-3">Quick links</h5>
+            <ul class="list-unstyled text-muted">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Contests</a></li>
+              <li><a href="#">Signin</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-white mb-3">Connect with us</h5>
+
+            <form action="#">
+              <div class="input-group mb-3">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Email"
+                  aria-label="Recipient's username"
+                  aria-describedby="button-addon2"
+                />
+                <button
+                  class="btn btn-primary"
+                  id="button-addon2"
+                  type="button"
+                >
+                  <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </form>
+            <a href="#"
+              ><i class="fa-brands fa-google fa-2xl" style="color: red"></i
+            ></a>
+
+            <script
+              src="https://kit.fontawesome.com/3ac6322543.js"
+              crossorigin="anonymous"
+            ></script>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script src="./js/leaderboard.js" type="module"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script
+      rel="type/javascript"
+      src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"
+    ></script>
+
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"
+    ></script>
+  </body>
+</html>

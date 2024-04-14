@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trading Game</title>
+
+    <!-- Bootstrap css -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- Socket io Client CDN -->
+    <script
+      src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+      integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom css -->
+    <link rel="stylesheet" href="./css/contest.css" />
+  </head>
+  <body>
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container fixed-bottom">
+      <div class="tradingview-widget-container__widget"></div>
+
+      <script
+        type="text/javascript"
+        src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+        async
+      >
+          {
+          "symbols": [
+            {
+              "proName": "FOREXCOM:SPXUSD",
+              "title": "S&P 500"
+            },
+            {
+              "proName": "FOREXCOM:NSXUSD",
+              "title": "US 100"
+            },
+            {
+              "proName": "FX_IDC:EURUSD",
+              "title": "EUR/USD"
+            },
+            {
+              "proName": "BITSTAMP:BTCUSD",
+              "title": "Bitcoin"
+            },
+            {
+              "proName": "BITSTAMP:ETHUSD",
+              "title": "Ethereum"
+            }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "light",
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "locale": "in"
+        }
+      </script>
+    </div>
+
+    <!-- TradingView Widget END -->
+    <!-- Navbar -->
+     <div class="cover-container d-flex h-100 p-3 flex-column sticky-top">
+      <header class="masthead mb-auto">
+        <div class="container-fluid inner">
+          <h3 class="masthead-brand fwt-700" style="text-align: center">
+            Trading <span class="text-primary">Game </span>
+          </h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="index.html"
+              ><button class="btn btn-outline-primary">Home</button></a
+            >
+            <a class="nav-link" href="contests.html"
+              ><button class="btn btn-outline-primary">Contests</button></a
+            >
+            <a class="nav-link" href="signin.html" id="loginbtn"
+              ><button class="btn btn-outline-primary">Login</button></a
+            >
+
+            <button
+              id="profilebtn"
+              type="button"
+              class="btn btn-outline-light"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style="border: none"
+            >
+              <img id="navprofileimg" src="img/1.jpg" class="circle-img mb-2" alt="User Img" />
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" id="dashboardbtn" href="#">Dashboard</a>
+              
+
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" id="logoutbtn">Log Out</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+    </div>
+    <div class="jumbotron rounded bg-linear text-White">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-md-12 mt-5 px-5">
+            <h1 class="display-4" style="text-align: center">
+              <span class="fwt-900 heading" id="ContestName">Contest Name</span>
+            </h1>
+            <p class="lead my-3 fwt-700" style="text-align: center">
+              <span class="subheading1">Organised By </span><br />
+              <span class="subheading2" id="organiser">Dream11</span>
+              
+            </p>
+            <p style="text-align: center;"> <a id="leaderboardbtn" href=""><button class="btn btn-primary " style="font-size:40px;font-weight: 700;">Leaderboard</button></a></p>
+            
+          </div>
+           <div class="col-md-4 mt-5 px-5">
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr style="width: 70%" />
+
+    <div class="container">
+      <h1 class="display-4" style="text-align: center; font-weight: 400">
+        <!-- <span class="fwt-700">TOP</span><span> Gainers </span> -->
+      </h1>
+      <br />
+      <br />
+
+      <div id="topgainers" class="row">
+        <div class="col-sm-3">
+          <div class="leaderboard-card first">
+            <div class="leaderboard-card__top">
+              <h3 class="text-center" id="UserCount">1234</h3>
+            </div>
+            <div class="leaderboard-card__body">
+              <div class="text-center">
+                <!-- <img class=" circle-img mb-2"> -->
+                <i
+                  class="fa fa-users fa-3x text-primary circle-img mb-2"
+                  aria-hidden="true"
+                  style=""
+                ></i>
+                <br />
+                <h5 class="mb-0">USERS JOINED</h5>
+
+                <hr />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="leaderboard-card first">
+            <div class="leaderboard-card__top">
+              <h3 class="text-center" id="prize">$1234</h3>
+            </div>
+            <div class="leaderboard-card__body">
+              <div class="text-center">
+                <!-- <img class=" circle-img mb-2"> -->
+                <i
+                  class="fa fa-trophy fa-3x circle-img mb-2"
+                  aria-hidden="true"
+                  style="color: gold"
+                ></i>
+                <br />
+                <h5 class="mb-0">PRIZES</h5>
+
+                <hr />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="leaderboard-card first">
+            <div class="leaderboard-card__top">
+              <h3 class="text-center" id="time">5hr 30min</h3>
+            </div>
+            <div class="leaderboard-card__body">
+              <div class="text-center">
+                <!-- <img class=" circle-img mb-2"> -->
+                <i
+                  class="fa fa-clock fa-3x"
+                  style="color: rgb(91, 91, 88)"
+                  aria-hidden="true"
+                ></i>
+                <br />
+                <h5 class="mb-0">ENDS IN</h5>
+                <hr />
+              </div>
+            </div>
+          </div>
+        </div>
+           <div class="col-sm-3">
+          <div class="leaderboard-card first">
+            <div class="leaderboard-card__top">
+              <h3 class="text-center" id="balance">100000</h3>
+            </div>
+            <div class="leaderboard-card__body">
+              <div class="text-center">
+                <!-- <img class=" circle-img mb-2"> -->
+                <i class="fa-solid fa-dollar-sign fa-3x" style="color: rgb(80, 251, 7)"
+                  aria-hidden="true"></i>
+                <br />
+                <h5 class="mb-0">Balance</h5>
+                <hr />
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-12 p-5" style="text-align: center">
+          <button
+            id="portfoliobtn"
+            class="btn btn-outline-primary col-md-3 mx-3 col choice font-weight-bold"
+          >
+            Your Portfolio
+          </button>
+          <button
+            id="stocksbtn"
+            class="btn col-md-3 col btn-outline-primary mx-3 choice active font-weight-bold"
+          >
+            All Stocks
+          </button>
+          <button
+            id="historybtn"
+            class="btn col-md-3 col btn-outline-primary mx-3 choice font-weight-bold"
+          >
+            Order History
+          </button>
+        </div>
+      </div>
+    </div>
+    <br /><br />
+    <div class="col-md-12">
+      <h1 class="display-4 ml-5" style="">
+        <span id="contesttype" class="ml-5"
+          >ALL <span class="fwt-700"> STOCKS</span></span
+        >
+        <hr />
+      </h1>
+    </div>
+    <div class="container-fluid pb-md-4">
+      <div class="row justify-content-center" id="stockList"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-100 py-4 flex-shrink-0">
+      <div class="container py-4">
+        <div class="row gy-4 gx-5 justify-content-between">
+          <div class="col-lg-4 col-md-6">
+            <h5 class="h1 text-white">
+              Trading<span class="text-primary"> Game </span>
+            </h5>
+            <p class="small text-muted">
+              Increase your Trading skills anytime you want witch incentives.
+              Just Use Trading Game like Thousands of People and make your life
+              easier
+            </p>
+            <p class="small text-muted mb-0">
+              &copy; Copyrights. All rights reserved.
+              <a class="text-primary" href="#">Tradinggame.com</a>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h5 class="text-white mb-3">Quick links</h5>
+            <ul class="list-unstyled text-muted">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Contests</a></li>
+              <li><a href="#">Signin</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-white mb-3">Connect with us</h5>
+
+            <form action="#">
+              <div class="input-group mb-3">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Email"
+                  aria-label="Recipient's username"
+                  aria-describedby="button-addon2"
+                />
+                <button
+                  class="btn btn-primary"
+                  id="button-addon2"
+                  type="button"
+                >
+                  <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </form>
+            <a href="#"
+              ><i class="fa-brands fa-google fa-2xl" style="color: red"></i
+            ></a>
+
+            <script
+              src="https://kit.fontawesome.com/3ac6322543.js"
+              crossorigin="anonymous"
+            ></script>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="buyModal"
+      role="dialog"
+      aria-labelledby="OrderModal"
+      aria-hidden="false"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="OrderModal">Place Order</h5>
+            <button
+              type="button"
+              class="close"
+              id="closeOrderModal"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row justify-content-around">
+              <div class="">
+                <input
+                  class=""
+                  type="radio"
+                  name="OrderType"
+                  id="LimitOrder"
+                  value="limit"
+                  checked
+                />
+                <label class="" for="LimitOrder"> Limit Order </label>
+              </div>
+              <div class="">
+                <input
+                  class=""
+                  type="radio"
+                  name="OrderType"
+                  id="MarketOrder"
+                  value="market"
+                />
+                <label class="" for="MarketOrder"> Market Order </label>
+              </div>
+            </div>
+            <br />
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-2 col-form-label"
+                >Quantity</label
+              >
+              <div class="col-sm-10">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="orderQty"
+                  placeholder="Enter Quantity"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword3" class="col-sm-2 col-form-label"
+                >Price</label
+              >
+              <div class="col-sm-10">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="reqPrice"
+                  placeholder="Enter Required Price"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <!-- <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button> -->
+            <button class="btn btn-outline-danger orderbtn" id="sellOrder">
+              Sell
+            </button>
+            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+            <button class="btn btn-outline-primary orderbtn" id="buyOrder">
+              Buy
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom JS file -->
+    <script src="./js/contest.js" type="module" ></script>
+  </body>
+</html>

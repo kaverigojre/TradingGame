@@ -1,0 +1,238 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  justify-content: center;
+  color: black;
+  /* text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5); */
+  /* box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5); */
+}
+
+/* Navbar */
+.fwt-700 {
+  font-weight: 700;
+}
+.none{
+  display: none;
+}
+
+.cover-container {
+  background-color: #fff;
+  max-width: 100%;
+}
+
+.masthead {
+  font-weight: 600;
+  margin-bottom: 2rem;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: -15px;
+  background-color: #fff;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+  font-size: 2rem;
+}
+
+.nav-masthead .nav-link {
+  padding: 0.25rem 0;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+  background-color: transparent;
+  border-bottom: 0.25rem solid transparent;
+}
+img.circle-img {
+  margin-top: -5px;
+	height: 45px;
+	width: 45px;
+	border-radius: 70px;
+	border: 3px solid #fff;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+img.circle-img.circle-img--small {
+	height: 55px;
+	width: 55px;
+	border-radius: 55px;
+}
+img.circle-img-profile {
+  margin-top: -5px;
+	height: 120px;
+	width: 120px;
+	border-radius: 70px;
+	border: 3px solid #fff;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+img.circle-img-profile.circle-img-profile--small {
+	height: 55px;
+	width: 55px;
+	border-radius: 55px;
+}
+.circle-img-profile:hover{
+  cursor: pointer;
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, 0.25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  /* background-color: black; */
+  border-radius: 5px;
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+    margin-right: 5%;
+  }
+}
+/* stats */
+.jumbotron {
+  min-height: 600px;
+}
+.statitem {
+  text-align: center;
+  font-size: 20px;
+}
+.orgitem {
+  text-align: left;
+  font-weight: 700;
+  font-size: 20px;
+}
+.wallet {
+  text-align: left;
+  font-weight: 700;
+  font-size: 20px;
+}
+.statnumber {
+  font-size: 25px;
+}
+.pchange{
+  font-size: 20px;
+  text-align: center;
+}
+.walletcard {
+  transition: 0.7s;
+  background-color: #0275d8;
+  color: #fff;
+}
+.walletcard:hover {
+  background-color: #000;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.pchangecard{
+    color: #fff;
+  background-color: #000;
+  cursor: pointer;
+
+}
+.addcontest {
+  position: fixed;
+  right: 10px;
+  bottom: 60px;
+  z-index: 9999;
+}
+.profilename{
+  font-size: 22px;
+  font-weight: 700;
+}
+.profileemail{
+  font-weight: 500;
+}
+/* landing */
+.bg-linear {
+  background-color: #e6e6e6;
+
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+/* Contest Cards */
+
+.card {
+  border: none;
+}
+
+.c-details span {
+  font-weight: 300;
+  font-size: 13px;
+}
+.cardbtn {
+  float: right;
+  width: 50%;
+  font-weight: 600;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  background-color: #eee;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 39px;
+}
+
+.badge span {
+  background-color: #fffbec;
+  width: 60px;
+  height: 25px;
+  font-size: 15px;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+.prize {
+  font-weight: 700 !important;
+  font-size: 30px !important;
+  color: #000000;
+}
+.badge-active {
+  color: #53be02;
+}
+.badge-upcoming {
+  color: #464aff;
+}
+.badge-rejected {
+  color: #f51f07;
+}
+.progress {
+  height: 10px;
+  border-radius: 10px;
+}
+
+.progress div {
+  background-color: #464aff;
+}
+
+.text1 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.text2 {
+  color: #a5aec0;
+}
+
+/* footer */
+
+footer {
+  background: #212529;
+}
