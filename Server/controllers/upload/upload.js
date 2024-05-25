@@ -8,10 +8,10 @@ const multerS3 = require("multer-s3");
 
 dotenv.config();
 let s3 = new S3Client({
-  region: process.env.AWS_REGION,
+  region: process.env.AWS_REGION, //Need to specify env file
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,//Need to specify env file
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,//Need to specify env file
   },
   sslEnabled: false,
   s3ForcePathStyle: true,
