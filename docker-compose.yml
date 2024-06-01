@@ -2,16 +2,17 @@ version: "1.0"
 
 services:
   client:
-    build: ./TradingGameCleint
+    build: ./Client
     ports:
       - "80:80"
     depends_on:
-      - backend
-  Server:
-    build: ./TradingGameServer
+      - server
+  server:
+    build: ./Server
     ports:
       - "4292:4292"
-  Webnsockets:
-    build: ./TradingGameWebSockets
+  webnsockets:
+    build: ./websockets
     ports:
-      - ""
+      - "3000:3000"
+    

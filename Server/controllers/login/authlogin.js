@@ -6,7 +6,7 @@ dotenv.config();
 
 const authlogin = async (req, res) => {
   try {
-    var tokenbody = jwt.verify(req.body.token, process.env.SECRET_KEY);
+    var tokenbody = jwt.verify(req.body.token, process.env.SECRET_KEY); //added env file
     var user = await userModelCtrl.userModel.find({ email: tokenbody.uid });
 
     if (user.length > 0) {

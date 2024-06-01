@@ -19,5 +19,20 @@ d-----        25-05-2024  05:32 PM                websockets
 -a----        26-05-2024  03:59 PM             28 README.md
 ```
 
-## Setup Docker 
+## Setup the Docker file and creating tiers: 
+  ## add .env file in client folder and add below attributes
+
+``bash
+AWS_REGION = ""
+AWS_ACCESS_KEY_ID = ""
+AWS_SECRET_ACCESS_KEY = ""
+AWS_BUCKET_NAME = ""
+SECRET_KEY=""
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+MONGODB_CONNECTION_STRING=""
+
+```
+## run docker file
+
 
