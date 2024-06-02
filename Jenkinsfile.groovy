@@ -38,10 +38,6 @@ pipeline {
 
     }
 
-    stage('build images') {
-
-      parallel {
-
         stage('build backend') {
 
           steps {
@@ -83,9 +79,9 @@ pipeline {
 
         }
 
-      }
+      
 
-    }
+    
 
     stage('push images to docker') {
 
@@ -93,7 +89,7 @@ pipeline {
 
         script {
 
-          sh 'docker logout'
+          /*sh 'docker logout'*/
 
           withCredentials([usernamePassword(credentialsId: 'kaveri-docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
 
@@ -105,9 +101,11 @@ pipeline {
 
             docker.withRegistry('https://index.docker.io/v1/', 'kaveri-docker-hub') {
 
-              docker.image("${env.DOCKER_IMAGE_RESUME_BUILDER_BACKEND}:${env.BUILD_ID}").push()
+              docker.image("${env.DOCKER_IMAGE_SERVER}:${env.BUILD_ID}").push()
+              docker.image("${env.DOCKER_IMAGE_CLIENT}:${env.BUILD_ID}").push()
+              docker.image("${env.DOCKER_IMAGE_SOCKET}:${env.BUILD_ID}").push()
 
-              docker.image("${e}").push()
+             
 
               }
 
