@@ -48,7 +48,7 @@ pipeline {
 
             script {
 
-              docker.build("${env.DOCKER_IMAGE_RESUME_BUILDER_BACKEND}:${env.BUILD_ID}", './Server/')
+              docker.build("${env.DOCKER_IMAGE_SERVER}:${env.BUILD_ID}", './Server/')
 
             }
 
@@ -62,7 +62,7 @@ pipeline {
 
             script {
 
-              docker.build("${env.DOCKER_IMAGE_RESUME_BUILDER_FRONTEND}:${env.BUILD_ID}", './Client/')
+              docker.build("${env.DOCKER_IMAGE_CLIENT}:${env.BUILD_ID}", './Client/')
 
             }
 
@@ -75,7 +75,7 @@ pipeline {
 
             script {
 
-              docker.build("${env.DOCKER_IMAGE_RESUME_BUILDER_FRONTEND}:${env.BUILD_ID}", './websockets/')
+              docker.build("${env.DOCKER_IMAGE_SOCKET}:${env.BUILD_ID}", './websockets/')
 
             }
 
